@@ -1,4 +1,5 @@
 ﻿using StardewModdingAPI;
+using Bookcase.Events;
 
 namespace Bookcase {
 
@@ -13,8 +14,7 @@ namespace Bookcase {
             modHelper = helper;
             reflection = helper.Reflection;
             logger = new Log(this);
-
-            logger.Info("Succesffuly loaded!");
+            StardewModHooksWrapper.CreateWrapper(this);
         }
     }
 }

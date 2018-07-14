@@ -11,10 +11,6 @@ namespace Bookcase.Utils
     public class NPCUtils
     {
         /// <summary>
-        /// Cache for NPC tileLocation - reduces double call of NPC location calculation to a single call. Be careful about forgetting to assign this!
-        /// </summary>
-        private static Vector2 npcTileLoc;
-        /// <summary>
         /// Gets all NPCs currently on the tiles under the mouse cursor
         /// </summary>
         /// <returns>A List of all NPCs under the mouse cursor</returns>
@@ -23,8 +19,7 @@ namespace Bookcase.Utils
             List<NPC> npcs = new List<NPC>();
             foreach (NPC n in Game1.player.currentLocation.getCharacters())
             {
-                npcTileLoc = n.getTileLocation();
-                if (IsNPCOnMouseTile(true))
+                if (IsNPCOnMouseTile(n.getTileLocation(), true))
                 {
                     npcs.Add(n);
                 }
@@ -42,9 +37,10 @@ namespace Bookcase.Utils
         /// <summary>
         /// Checks if an NPC is on the same tile as the mouse, with the option of checking the tile above aswell. (Most NPCs fill 2 tiles, visually)
         /// </summary>
-        /// <param name="checkOneTileAbove"></param>
+        /// <param name="checkOneTileAbove">If it is desirable for the tile above the NPC's feet to be checked aswell</param>
+        /// <param name="npcTileLoc">The NPC's tile location</param>
         /// <returns></returns>
-        public static bool IsNPCOnMouseTile(bool checkOneTileAbove = false)
+        public static bool IsNPCOnMouseTile(Vector2 npcTileLoc, bool checkOneTileAbove = false)
         {
             return Game1.currentCursorTile == npcTileLoc || (checkOneTileAbove && Game1.currentCursorTile == (npcTileLoc - Vector2.UnitY));
         }

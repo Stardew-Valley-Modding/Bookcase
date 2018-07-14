@@ -11,20 +11,33 @@ namespace Bookcase.Utils
     public class NPCUtils
     {
         /// <summary>
-        /// Cache for NPC tileLocation - reduces double call of NPC location calculation to a single call.
+        /// Cache for NPC tileLocation - reduces double call of NPC location calculation to a single call. Be careful about forgetting to assign this!
         /// </summary>
         private static Vector2 npcTileLoc;
         /// <summary>
-        /// Gets all NPC Characters in the player's current location
+        /// Gets all NPCs currently on the tiles under the mouse cursor
         /// </summary>
-        private static IList<NPC> LocationCharacters
+        /// <returns>A List of all NPCs under the mouse cursor</returns>
+        public static List<NPC> GetNPCsUnderCursor()
         {
-            get
+            List<NPC> npcs = new List<NPC>();
+            foreach (NPC n in Game1.player.currentLocation.getCharacters())
             {
-                if (Game1.gameMode == Game1.playingGameMode)
-                    return Game1.player.currentLocation.getCharacters();
-                return null;
+                npcTileLoc = n.getTileLocation();
+                if (IsNPCOnMouseTile(true))
+                {
+                    npcs.Add(n);
+                }
             }
+            return npcs;
+        }
+        /// <summary>
+        /// Gets the NPC currently on the tiles under the mouse cursor
+        /// </summary>
+        /// <returns>The first NPC below the mouse, or null</returns>
+        public static NPC GetNPCUnderCursor()
+        {
+            return GetNPCsUnderCursor().FirstOrDefault();
         }
         /// <summary>
         /// Checks if an NPC is on the same tile as the mouse, with the option of checking the tile above aswell. (Most NPCs fill 2 tiles, visually)
@@ -42,20 +55,8 @@ namespace Bookcase.Utils
         /// <returns>True if there is an NPC present, False if there is not.</returns>
         public static bool TryGetNPCUnderCursor(out NPC npc)
         {
-            if (Game1.gameMode == Game1.playingGameMode)
-            {
-                foreach (NPC n in LocationCharacters)
-                {
-                    npcTileLoc = n.getTileLocation();
-                    if (IsNPCOnMouseTile(true))
-                    {
-                        npc = n;
-                        return true;
-                    }
-                }
-            }
-            npc = null;
-            return false;
+            npc = GetNPCUnderCursor();
+            return npc != null;
         }
         /// <summary>
         /// Tries to get an NPC (filtered by some specified filter) on the tile under the mouse cursor.
@@ -66,10 +67,7 @@ namespace Bookcase.Utils
         public static bool TryGetNPCUnderCursor(out NPC npc, Func<NPC, bool> filter)
         {
             bool b = TryGetNPCsUnderCursor(out List<NPC> toFilter, filter);
-            if (b)
-                npc = toFilter.First();//First element of the List
-            else
-                npc = null;
+            npc = toFilter.FirstOrDefault();
             return b;
         }
         /// <summary>
@@ -79,18 +77,7 @@ namespace Bookcase.Utils
         /// <returns>True if there is an NPC present, False if there is not.</returns>
         public static bool TryGetNPCsUnderCursor(out List<NPC> npcs)
         {
-            npcs = new List<NPC>();
-            if (Game1.gameMode == Game1.playingGameMode)
-            {
-                foreach (NPC n in LocationCharacters)
-                {
-                    npcTileLoc = n.getTileLocation();
-                    if (IsNPCOnMouseTile(true))
-                    {
-                        npcs.Add(n);
-                    }
-                }
-            }
+            npcs = GetNPCsUnderCursor();
             return npcs.Count > 0;
         }
         /// <summary>
@@ -101,11 +88,7 @@ namespace Bookcase.Utils
         /// <returns>True if there is a filtered NPC present, False if there is not, or the filter removes the NPC present</returns>
         public static bool TryGetNPCsUnderCursor(out List<NPC> npc, Func<NPC, bool> filter)
         {
-            npc = new List<NPC>();
-            bool b = TryGetNPCsUnderCursor(out List<NPC> toFilter);
-            if (!b)
-                return false;//No NPCs Present
-            npc = toFilter.Where(filter).ToList();
+            npc = GetNPCsUnderCursor().Where(filter).ToList();
             return npc.Count > 0;
         }
     }

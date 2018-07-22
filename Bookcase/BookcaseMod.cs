@@ -1,5 +1,6 @@
 ﻿using StardewModdingAPI;
 using Bookcase.Events;
+using Bookcase.Patches;
 using System;
 
 namespace Bookcase {
@@ -19,6 +20,7 @@ namespace Bookcase {
             random = new Random();
 
             StardewModHooksWrapper.CreateWrapper(this);
+            PatchManager patchManager = new PatchManager();
         }
     }
 }

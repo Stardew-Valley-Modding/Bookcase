@@ -1,0 +1,28 @@
+﻿using System;
+using System.Reflection;
+using StardewValley;
+using StardewValley.Menus;
+using Bookcase.Events;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Bookcase.Patches {
+
+    class TooltipPatch : IGamePatch {
+
+        Type IGamePatch.TargetType => typeof(IClickableMenu);
+
+        MethodInfo IGamePatch.TargetMethod => typeof(IClickableMenu).GetMethod("drawToolTip");
+
+        public static void Prefix(SpriteBatch b, ref string hoverText, ref string hoverTitle, Item hoveredItem, ref int healAmountToDisplay, ref int currencySymbol, ref int moneyAmountToShowAtBottom) {
+
+            TooltipEvent theEvent = new TooltipEvent(b, hoveredItem, hoverTitle, hoverText, healAmountToDisplay, currencySymbol, moneyAmountToShowAtBottom);
+            BookcaseEvents.OnTooltip.Post(theEvent);
+
+            hoverTitle = theEvent.Title;
+            hoverText = theEvent.Description;
+            healAmountToDisplay = theEvent.HealAmount;
+            currencySymbol = theEvent.CurrencySymbol;
+            moneyAmountToShowAtBottom = theEvent.MoneyToShow;
+        }
+    }
+}

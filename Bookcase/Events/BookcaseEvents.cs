@@ -7,6 +7,6 @@ namespace Bookcase.Events {
         /// <summary>
         /// This event is fired when an item tooltip is displayed.
         /// </summary>
-        public static EventBus<TooltipEvent> OnTooltip = new EventBus<TooltipEvent>();
+        public static EventBus<ItemTooltipEvent> OnItemTooltip = new EventBus<ItemTooltipEvent>();
     }
 }

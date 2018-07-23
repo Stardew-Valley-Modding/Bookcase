@@ -15,8 +15,8 @@ namespace Bookcase.Patches {
 
         public static void Prefix(SpriteBatch b, ref string hoverText, ref string hoverTitle, Item hoveredItem, ref int healAmountToDisplay, ref int currencySymbol, ref int moneyAmountToShowAtBottom) {
 
-            TooltipEvent theEvent = new TooltipEvent(b, hoveredItem, hoverTitle, hoverText, healAmountToDisplay, currencySymbol, moneyAmountToShowAtBottom);
-            BookcaseEvents.OnTooltip.Post(theEvent);
+            ItemTooltipEvent theEvent = new ItemTooltipEvent(b, hoveredItem, hoverTitle, hoverText, healAmountToDisplay, currencySymbol, moneyAmountToShowAtBottom);
+            BookcaseEvents.OnItemTooltip.Post(theEvent);
 
             hoverTitle = theEvent.Title;
             hoverText = theEvent.Description;

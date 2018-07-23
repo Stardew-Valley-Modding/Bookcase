@@ -8,7 +8,7 @@ namespace Bookcase.Events {
     /// 
     /// This event can NOT be canceled!
     /// </summary>
-    public class TooltipEvent : Event {
+    public class ItemTooltipEvent : Event {
 
         /// <summary>
         /// The SpriteBatch used to draw the tooltip.
@@ -57,7 +57,7 @@ namespace Bookcase.Events {
         /// </summary>
         public int MoneyToShow { get; set; }
 
-        public TooltipEvent(SpriteBatch batch, Item item, string title, string description, int healAmount, int currencySymbol, int moneyToShow) {
+        public ItemTooltipEvent(SpriteBatch batch, Item item, string title, string description, int healAmount, int currencySymbol, int moneyToShow) {
 
             this.Batch = batch;
             this.Item = item;

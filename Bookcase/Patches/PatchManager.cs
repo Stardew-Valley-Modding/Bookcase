@@ -47,8 +47,6 @@ namespace Bookcase.Patches {
 
                         // Check if the constructor has no parameters. 
                         if (constructor.GetParameters().Length == 0) {
-
-                            BookcaseMod.logger.Debug($"Attempting to construct patch from {type.FullName}.");
                             
                             try {
 

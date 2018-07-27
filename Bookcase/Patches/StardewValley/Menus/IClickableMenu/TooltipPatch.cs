@@ -5,6 +5,7 @@ using StardewValley.Menus;
 using Bookcase.Events;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace Bookcase.Patches {
 
     class TooltipPatch : IGamePatch {

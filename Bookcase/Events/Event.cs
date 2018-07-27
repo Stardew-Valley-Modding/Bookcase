@@ -25,7 +25,7 @@ namespace Bookcase.Events {
         /// Checks if the event can be canceled.
         /// </summary>
         /// <returns>Whether or not the event can be canceled.</returns>
-        public bool CanCancel() {
+        public virtual bool CanCancel() {
 
             return false;
         }

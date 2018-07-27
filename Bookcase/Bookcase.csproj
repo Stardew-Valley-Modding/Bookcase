@@ -51,12 +51,15 @@
     <Compile Include="Events\BookcaseEvents.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\EventBus.cs" />
+    <Compile Include="Events\Farmer\FarmerEvent.cs" />
+    <Compile Include="Events\Farmer\FarmerGainExperienceEvent.cs" />
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
     <Compile Include="Patches\IGamePatch.cs" />
     <Compile Include="Patches\PatchManager.cs" />
-    <Compile Include="Patches\Menus\IClickableMenu\TooltipPatch.cs" />
+    <Compile Include="Patches\StardewValley\Farmer\PatchGainExperience.cs" />
+    <Compile Include="Patches\StardewValley\Menus\IClickableMenu\TooltipPatch.cs" />
     <Compile Include="Utils\ItemUtils.cs" />
     <Compile Include="Utils\MathsUtils.cs" />
     <Compile Include="Utils\NPCUtils.cs" />

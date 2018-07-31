@@ -54,8 +54,10 @@
     <Compile Include="Events\Farmer\FarmerEvent.cs" />
     <Compile Include="Events\Farmer\FarmerGainExperienceEvent.cs" />
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
+    <Compile Include="Events\Tools\AfterFishCaughtEvent.cs" />
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
+    <Compile Include="Patches\FishCaughtPatch.cs" />
     <Compile Include="Patches\IGamePatch.cs" />
     <Compile Include="Patches\PatchManager.cs" />
     <Compile Include="Patches\StardewValley\Farmer\PatchGainExperience.cs" />

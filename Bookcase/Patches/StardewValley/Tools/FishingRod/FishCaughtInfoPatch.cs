@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bookcase.Patches
 {
-    public class FishCaughtPatch : IGamePatch
+    public class FishCaughtInfoPatch : IGamePatch
     {
         public Type TargetType => typeof(StardewValley.Tools.FishingRod);
 

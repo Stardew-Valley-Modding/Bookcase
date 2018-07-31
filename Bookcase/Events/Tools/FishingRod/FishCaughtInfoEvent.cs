@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Bookcase.Events
 {
     /// <summary>
-    /// Readonly information about the currently caught fish - intercepted from the Networking call by FishingRod. Immutable.
+    /// Immutable information about the currently caught fish - intercepted from the Networking call by FishingRod.
     /// </summary>
     public class FishCaughtInfoEvent : Event
     {
@@ -23,6 +23,9 @@ namespace Bookcase.Events
         /// The quality of the fish.
         /// </summary>
         public int FishQuality { get; private set; }
+        /// <summary>
+        /// The difficulty of the fishing minigame,  0 if the item was caught without playing the minigame - see BobberBar.update(GameTime).
+        /// </summary>
         public int FishDifficulty { get; private set; }
         /// <summary>
         /// If there was a treasure caught aswell.
@@ -32,7 +35,6 @@ namespace Bookcase.Events
         /// If the fishing minigame was completed with a perfect score.
         /// </summary>
         public bool WasPerfect { get; private set; }
-
         internal FishCaughtInfoEvent(int fishID, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect)
         {
             FishID = fishID;

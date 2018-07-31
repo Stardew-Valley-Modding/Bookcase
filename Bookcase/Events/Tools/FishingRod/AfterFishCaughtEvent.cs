@@ -11,26 +11,36 @@ namespace Bookcase.Events
     /// </summary>
     public class AfterFishCaughtEvent : Event
     {
+        internal AfterFishCaughtEvent(int fishID, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect)
+        {
+            FishID = fishID;
+            FishSize = fishSize;
+            FishQuality = fishQuality;
+            FishDifficulty = fishDifficulty;
+            TreasureCaught = treasureCaught;
+            WasPerfect = wasPerfect;
+        }
+
         /// <summary>
         /// The fish's object id.
         /// </summary>
-        public int fishID;
+        public int FishID { get; private set; }
         /// <summary>
         /// The size of the fish in inches.
         /// </summary>
-        public int fishSize;
+        public int FishSize { get; private set; }
         /// <summary>
         /// The quality of the fish.
         /// </summary>
-        public int fishQuality;
-        public int fishDifficulty;
+        public int FishQuality { get; private set; }
+        public int FishDifficulty { get; private set; }
         /// <summary>
         /// If there was a treasure caught aswell.
         /// </summary>
-        public bool treasureCaught;
+        public bool TreasureCaught { get; private set; }
         /// <summary>
         /// If the fishing minigame was completed with a perfect score.
         /// </summary>
-        public bool wasPerfect;
+        public bool WasPerfect { get; private set; }
     }
 }

@@ -16,15 +16,7 @@ namespace Bookcase.Patches
 
         public static bool Prefix(int whichFish, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect = false)
         {
-            AfterFishCaughtEvent caughtEvent = new AfterFishCaughtEvent
-            {
-                fishID = whichFish,
-                fishSize = fishSize,
-                fishQuality = fishQuality,
-                fishDifficulty = fishDifficulty,
-                treasureCaught = treasureCaught,
-                wasPerfect = wasPerfect
-            };
+            AfterFishCaughtEvent caughtEvent = new AfterFishCaughtEvent(whichFish, fishSize, fishQuality, fishDifficulty, treasureCaught, wasPerfect);
             BookcaseEvents.AfterFishCaught.Post(caughtEvent);
             return true;
         }

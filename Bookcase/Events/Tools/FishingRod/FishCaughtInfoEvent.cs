@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Bookcase.Events
 {
     /// <summary>
-    /// Readonly information about the currently caught fish - intercepted from the Networking call by FishingRod.
+    /// Readonly information about the currently caught fish - intercepted from the Networking call by FishingRod. Immutable.
     /// </summary>
-    public class AfterFishCaughtEvent : Event
+    public class FishCaughtInfoEvent : Event
     {
-        internal AfterFishCaughtEvent(int fishID, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect)
+        internal FishCaughtInfoEvent(int fishID, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect)
         {
             FishID = fishID;
             FishSize = fishSize;

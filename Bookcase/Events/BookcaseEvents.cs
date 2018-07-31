@@ -9,9 +9,9 @@ namespace Bookcase.Events {
         /// </summary>
         public static EventBus<ItemTooltipEvent> OnItemTooltip = new EventBus<ItemTooltipEvent>();
         /// <summary>
-        /// This event is fired when a fish/junk is successfully caught by the player.
+        /// This event is fired when a fish/junk is successfully caught by the player, provides immutable information about fish caught.
         /// </summary>
-        public static EventBus<AfterFishCaughtEvent> AfterFishCaught = new EventBus<AfterFishCaughtEvent>();
+        public static EventBus<FishCaughtInfoEvent> FishCaughtInfo = new EventBus<FishCaughtInfoEvent>();
         public static EventBus<FarmerGainExperienceEvent> OnSkillEXPGain = new EventBus<FarmerGainExperienceEvent>();
     }
 }

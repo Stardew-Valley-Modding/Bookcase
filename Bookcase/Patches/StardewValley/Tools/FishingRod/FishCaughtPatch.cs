@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bookcase.Patches
 {
-    public class FishCaughtInfoPatch : IGamePatch
+    public class FishCaughtPatch : IGamePatch
     {
         public Type TargetType => typeof(StardewValley.Tools.FishingRod);
 
@@ -16,8 +16,8 @@ namespace Bookcase.Patches
 
         public static bool Prefix(int whichFish, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect = false)
         {
-            FishCaughtInfoEvent caughtEvent = new FishCaughtInfoEvent(whichFish, fishSize, fishQuality, fishDifficulty, treasureCaught, wasPerfect);
-            BookcaseEvents.FishCaughtInfo.Post(caughtEvent);
+            AfterFishCaughtEvent caughtEvent = new AfterFishCaughtEvent(whichFish, fishSize, fishQuality, fishDifficulty, treasureCaught, wasPerfect);
+            BookcaseEvents.AfterFishCaught.Post(caughtEvent);
             return true;
         }
     }

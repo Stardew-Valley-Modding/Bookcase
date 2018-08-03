@@ -1,10 +1,7 @@
-﻿using Bookcase.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Bookcase.Events;
+using StardewValley;
 
 namespace Bookcase.Patches
 {
@@ -14,9 +11,9 @@ namespace Bookcase.Patches
 
         public MethodInfo TargetMethod => TargetType.GetMethod("pullFishFromWater");
 
-        public static void Prefix(int whichFish, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect = false)
+        public static void Prefix(Farmer ___lastUser, int whichFish, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect = false)
         {
-            FishCaughtInfoEvent caughtEvent = new FishCaughtInfoEvent(whichFish, fishSize, fishQuality, fishDifficulty, treasureCaught, wasPerfect);
+            FarmerCaughtFishEvent caughtEvent = new FarmerCaughtFishEvent(___lastUser, whichFish, fishSize, fishQuality, fishDifficulty, treasureCaught, wasPerfect);
             BookcaseEvents.FishCaughtInfo.Post(caughtEvent);
         }
     }

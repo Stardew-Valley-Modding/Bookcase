@@ -12,7 +12,7 @@ namespace Bookcase.Events {
         /// <summary>
         /// This event is fired when a fish/junk is successfully caught by the player.
         /// </summary>
-        public static EventBus<FishCaughtInfoEvent> FishCaughtInfo = new EventBus<FishCaughtInfoEvent>();
+        public static EventBus<FarmerCaughtFishEvent> FishCaughtInfo = new EventBus<FarmerCaughtFishEvent>();
 
         /// <summary>
         /// This event is fired when a player gains EXP for a skill.

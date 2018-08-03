@@ -92,7 +92,7 @@ namespace Bookcase.Patches {
 
                 catch (Exception e) {
 
-                    BookcaseMod.logger.Error($"Patch failed: {e.Message}");
+                    BookcaseMod.logger.Error($"Patch failed: {e.ToString()}");
                 }
             }
         }

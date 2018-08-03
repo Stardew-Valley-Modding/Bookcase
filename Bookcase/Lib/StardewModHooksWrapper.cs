@@ -6,35 +6,33 @@ using xTile.Dimensions;
 using StardewModdingAPI;
 using System.Reflection;
 
-namespace Bookcase.Events {
+namespace Bookcase.Lib {
 
-    class StardewModHooksWrapper : ModHooks {
+    internal class StardewModHooksWrapper : ModHooks {
 
-        private readonly Mod owner;
         private readonly ModHooks previousHooks;
 
-        public static StardewModHooksWrapper CreateWrapper(Mod mod) {
+        internal static StardewModHooksWrapper CreateWrapper() {
 
             try {
 
-                FieldInfo hooksField = mod.Helper.Reflection.GetField<ModHooks>(typeof(Game1), "hooks").FieldInfo;
-                StardewModHooksWrapper wrapper = new StardewModHooksWrapper(mod, (ModHooks) hooksField.GetValue(null));
+                FieldInfo hooksField = BookcaseMod.reflection.GetField<ModHooks>(typeof(Game1), "hooks").FieldInfo;
+                StardewModHooksWrapper wrapper = new StardewModHooksWrapper((ModHooks) hooksField.GetValue(null));
                 hooksField.SetValue(null, wrapper);
-                mod.Monitor.Log("This mod has wrapped Game1.hooks!", LogLevel.Debug);
+                BookcaseMod.logger.Debug("This mod has wrapped Game1.hooks!");
                 return wrapper;
             }
 
             catch (Exception e) {
 
-                mod.Monitor.Log($"Could not create StardewModHooksWrapper. Failed with {e.Message}", LogLevel.Error);
+                BookcaseMod.logger.Error($"Could not create StardewModHooksWrapper. Failed with {e.Message}");
             }
 
             return null;
         }
 
-        public StardewModHooksWrapper(Mod mod, ModHooks previous) {
+        private StardewModHooksWrapper(ModHooks previous) {
 
-            this.owner = mod;
             this.previousHooks = previous;
         }
 

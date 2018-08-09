@@ -19,7 +19,7 @@ namespace Bookcase.Events {
         /// </summary>
         public int Amount { get; set; }
 
-        public FarmerGainExperienceEvent(Farmer farmer, int type, int amount) : base (farmer) {
+        public FarmerGainExperienceEvent(Farmer farmer, int type, int amount) : base(farmer) {
 
             this.SkillType = type;
             this.Amount = amount;
@@ -29,5 +29,5 @@ namespace Bookcase.Events {
 
             return true;
         }
-   }
+    }
 }

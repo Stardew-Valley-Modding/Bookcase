@@ -17,7 +17,7 @@ namespace Bookcase.Lib {
             try {
 
                 FieldInfo hooksField = BookcaseMod.reflection.GetField<ModHooks>(typeof(Game1), "hooks").FieldInfo;
-                StardewModHooksWrapper wrapper = new StardewModHooksWrapper((ModHooks) hooksField.GetValue(null));
+                StardewModHooksWrapper wrapper = new StardewModHooksWrapper((ModHooks)hooksField.GetValue(null));
                 hooksField.SetValue(null, wrapper);
                 BookcaseMod.logger.Debug("This mod has wrapped Game1.hooks!");
                 return wrapper;

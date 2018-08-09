@@ -13,7 +13,7 @@ namespace Bookcase {
         /// Constructs a new logger using a mod instance.
         /// </summary>
         /// <param name="mod">The instance of the mod used to create the logger.</param>
-        public Log(Mod mod) : this(mod.Monitor) {}
+        public Log(Mod mod) : this(mod.Monitor) { }
 
         /// <summary>
         /// Constructs a new logger using an IMonitor instance. This is commonly obtained from a mod. 

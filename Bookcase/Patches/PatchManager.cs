@@ -44,17 +44,17 @@ namespace Bookcase.Patches {
             Type typePatch = typeof(IGamePatch);
 
             // Loop through all the types in the Bookcase assembly.
-            foreach(Type type in assembly.GetTypes()) {
+            foreach (Type type in assembly.GetTypes()) {
 
                 // Check if the type implements the IGamePatch interface.
                 if (Array.Exists(type.GetInterfaces(), element => element == typePatch)) {
 
                     // Iterate constructors and find one that can be loaded.
-                    foreach(ConstructorInfo constructor in type.GetConstructors()) {
+                    foreach (ConstructorInfo constructor in type.GetConstructors()) {
 
                         // Check if the constructor has no parameters. 
                         if (constructor.GetParameters().Length == 0) {
-                            
+
                             try {
 
                                 // Try to create an instance of the patch object and load it into our registry.
@@ -63,7 +63,7 @@ namespace Bookcase.Patches {
                             }
 
 
-                            catch(Exception e) {
+                            catch (Exception e) {
 
                                 // Rat out the bad bois
                                 BookcaseMod.logger.Debug($"Failed to construct patch {type.FullName} with error {e.Message}.");

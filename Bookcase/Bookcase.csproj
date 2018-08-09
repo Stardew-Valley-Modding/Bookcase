@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lib.Harmony.1.2.0\lib\net45\0Harmony.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.1.2.0.1\lib\net45\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,6 +56,8 @@
     <Compile Include="Events\Farmer\FarmerCaughtFishEvent.cs" />
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
+    <Compile Include="Patches\PatchUtils.cs" />
+    <Compile Include="Patches\StardewValley\Tools\FishingRod\DoFunctionPatch.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\FishCaughtInfoPatch.cs" />
     <Compile Include="Patches\IGamePatch.cs" />
     <Compile Include="Patches\PatchManager.cs" />

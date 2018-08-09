@@ -13,6 +13,11 @@ namespace Bookcase.Patches {
         private readonly HarmonyInstance harmony;
 
         /// <summary>
+        /// Store a copy of the current harmony version being used at runtime.
+        /// </summary>
+        private readonly Version harmonyVersion;
+
+        /// <summary>
         /// List of loaded patches. Please don't reflect this.
         /// </summary>
         private List<IGamePatch> gamePatches;
@@ -21,6 +26,8 @@ namespace Bookcase.Patches {
 
             BookcaseMod.logger.Debug("Creating harmony instance...");
             harmony = HarmonyInstance.Create("net.darkhax.bookcase");
+            harmony.VersionInfo(out harmonyVersion);
+            BookcaseMod.logger.Debug($"Using Harmony {harmonyVersion.ToString()}.");
 
             this.Load();
             this.Apply();

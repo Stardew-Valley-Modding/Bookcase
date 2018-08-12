@@ -45,7 +45,7 @@ namespace Bookcase.Patches {
                 instance = new HarmonyBundled();
             }
 
-            catch(Exception e) {
+            catch (Exception e) {
 
                 BookcaseMod.logger.Error($"Failed to load bundled Harmony instance. {e.ToString()}");
             }

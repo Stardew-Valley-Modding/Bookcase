@@ -28,7 +28,7 @@ namespace Bookcase.Harmony {
 
         public void PatchMethod(MethodBase target, object prefix, object postfix, object transpile) {
 
-            this.harmony.Patch(target, (HarmonyMethod) prefix, (HarmonyMethod) postfix, (HarmonyMethod) transpile);
+            this.harmony.Patch(target, (HarmonyMethod)prefix, (HarmonyMethod)postfix, (HarmonyMethod)transpile);
         }
     }
 }

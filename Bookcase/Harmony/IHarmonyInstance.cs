@@ -11,7 +11,7 @@ namespace Bookcase.Harmony {
         /// <summary>
         /// The version of harmony loaded.
         /// </summary>
-        String Version { get;}
+        String Version { get; }
 
         /// <summary>
         /// Applies patches to the method.

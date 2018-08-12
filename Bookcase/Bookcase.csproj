@@ -53,7 +53,6 @@
     <Compile Include="Events\Farmer\FarmerEvent.cs" />
     <Compile Include="Events\Farmer\FarmerFishItemEvent.cs" />
     <Compile Include="Events\Farmer\FarmerGainExperienceEvent.cs" />
-    <Compile Include="Events\Location\LocationEvent.cs" />
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
     <Compile Include="Events\Farmer\FarmerCaughtFishEvent.cs" />
     <Compile Include="Harmony\HarmonyBundled.cs" />

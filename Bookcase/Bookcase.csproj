@@ -51,12 +51,16 @@
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\EventBus.cs" />
     <Compile Include="Events\Farmer\FarmerEvent.cs" />
+    <Compile Include="Events\Farmer\FarmerFishItemEvent.cs" />
     <Compile Include="Events\Farmer\FarmerGainExperienceEvent.cs" />
+    <Compile Include="Events\Location\LocationEvent.cs" />
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
     <Compile Include="Events\Farmer\FarmerCaughtFishEvent.cs" />
+    <Compile Include="Harmony\HarmonyBundled.cs" />
+    <Compile Include="Harmony\HarmonyFallback.cs" />
+    <Compile Include="Harmony\IHarmonyInstance.cs" />
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
-    <Compile Include="Patches\PatchUtils.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\DoFunctionPatch.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\FishCaughtInfoPatch.cs" />
     <Compile Include="Patches\IGamePatch.cs" />

@@ -1,21 +1,13 @@
-﻿using Harmony;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Bookcase.Harmony;
 
 namespace Bookcase.Patches {
 
     class PatchManager {
 
-        /// <summary>
-        /// Bookcases specific harmony instance. If you want to patch the game use your own!
-        /// </summary>
-        private readonly HarmonyInstance harmony;
-
-        /// <summary>
-        /// Store a copy of the current harmony version being used at runtime.
-        /// </summary>
-        private readonly Version harmonyVersion;
+        private IHarmonyInstance harmony;
 
         /// <summary>
         /// List of loaded patches. Please don't reflect this.
@@ -24,13 +16,55 @@ namespace Bookcase.Patches {
 
         public PatchManager() {
 
-            BookcaseMod.logger.Debug("Creating harmony instance...");
-            harmony = HarmonyInstance.Create("net.darkhax.bookcase");
-            harmony.VersionInfo(out harmonyVersion);
-            BookcaseMod.logger.Debug($"Using Harmony {harmonyVersion.ToString()}.");
+            this.harmony = LoadHarmony();
 
-            this.Load();
-            this.Apply();
+            if (harmony != null) {
+
+                BookcaseMod.logger.Info($"Loaded Harmony {harmony.Version}.");
+                this.Load();
+                this.Apply();
+            }
+
+            else {
+
+                BookcaseMod.logger.Error("Failed to load Harmony. Mod will still run but no patches are applied. Things wont work right!");
+            }
+        }
+
+        /// <summary>
+        /// Attempt to load an instance of harmony to apply patches with.
+        /// </summary>
+        /// <returns>The version of harmony that is loaded.</returns>
+        private static IHarmonyInstance LoadHarmony() {
+
+            IHarmonyInstance instance = null;
+
+            // Try to load the harmony that is bundled with bookcase.
+            try {
+
+                instance = new HarmonyBundled();
+            }
+
+            catch(Exception e) {
+
+                BookcaseMod.logger.Error($"Failed to load bundled Harmony instance. {e.ToString()}");
+            }
+
+            // If the bundled instance failed to load, attempt to use the fallback smapi harmony instance.
+            if (instance == null) {
+
+                try {
+
+                    instance = new HarmonyFallback();
+                }
+
+                catch (Exception e) {
+
+                    BookcaseMod.logger.Error($"Failed to load fallback Harmony instance. {e.ToString()}");
+                }
+            }
+
+            return instance;
         }
 
         /// <summary>
@@ -66,7 +100,7 @@ namespace Bookcase.Patches {
                             catch (Exception e) {
 
                                 // Rat out the bad bois
-                                BookcaseMod.logger.Debug($"Failed to construct patch {type.FullName} with error {e.Message}.");
+                                BookcaseMod.logger.Debug($"Failed to construct patch {type.FullName} with error {e.ToString()}.");
                             }
 
                             // Only one valid constructor per class.
@@ -94,7 +128,7 @@ namespace Bookcase.Patches {
                     Type type = patch.GetType();
 
                     // Search for Prefix, Postfix, Transpile methods from type to patch in to target method.
-                    harmony.Patch(patch.TargetMethod, FindMethod(type, "Prefix"), FindMethod(type, "Postfix"), FindMethod(type, "Transpile"));
+                    harmony.PatchMethod(patch.TargetMethod, harmony.GetHarmonyMethod(type, "Prefix"), harmony.GetHarmonyMethod(type, "Postfix"), harmony.GetHarmonyMethod(type, "Transpile"));
                 }
 
                 catch (Exception e) {
@@ -102,18 +136,6 @@ namespace Bookcase.Patches {
                     BookcaseMod.logger.Error($"Patch failed: {e.ToString()}");
                 }
             }
-        }
-
-        /// <summary>
-        /// Attempts to find a method in a class, and return the harmony method for it.
-        /// </summary>
-        /// <param name="type">The type to search in.</param>
-        /// <param name="name">The name of the target method.</param>
-        /// <returns>The harmony method, or null if it was not found.</returns>
-        private HarmonyMethod FindMethod(Type type, String name) {
-
-            MethodInfo method = type.GetMethod(name);
-            return method != null ? new HarmonyMethod(method) : null;
         }
     }
 }

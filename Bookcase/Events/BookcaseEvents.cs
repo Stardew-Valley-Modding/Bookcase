@@ -28,5 +28,10 @@ namespace Bookcase.Events {
         /// This event is fired when the nightly farm event is selected.
         /// </summary>
         public static EventBus<SelectFarmEvent> SelectFarmEvent = new EventBus<SelectFarmEvent>();
+
+        /// <summary>
+        /// This event is fired when the nightly personal event is selected.
+        /// </summary>
+        public static EventBus<SelectFarmEvent> SelectPersonalEvent = new EventBus<SelectFarmEvent>();
     }
 }

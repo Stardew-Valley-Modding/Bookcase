@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Input;
 using StardewValley.Events;
 using System;
 using xTile.Dimensions;
-using StardewModdingAPI;
 using System.Reflection;
+using Bookcase.Events;
 
 namespace Bookcase.Lib {
 
@@ -68,7 +68,9 @@ namespace Bookcase.Lib {
 
         public override FarmEvent OnUtility_PickFarmEvent(Func<FarmEvent> action) {
 
-            return this.previousHooks.OnUtility_PickFarmEvent(action);
+            FarmEvent original = this.previousHooks.OnUtility_PickFarmEvent(action);
+            SelectFarmEvent selectEvent = new SelectFarmEvent(original);
+            return BookcaseEvents.SelectFarmEvent.Post(selectEvent) ? null : selectEvent.SelectedEvent;
         }
     }
 }

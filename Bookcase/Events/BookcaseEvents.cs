@@ -23,5 +23,10 @@ namespace Bookcase.Events {
         /// This event is fired when a player gains EXP for a skill.
         /// </summary>
         public static EventBus<FarmerGainExperienceEvent> OnSkillEXPGain = new EventBus<FarmerGainExperienceEvent>();
+
+        /// <summary>
+        /// This event is fired when the nightly farm event is selected.
+        /// </summary>
+        public static EventBus<SelectFarmEvent> SelectFarmEvent = new EventBus<SelectFarmEvent>();
     }
 }

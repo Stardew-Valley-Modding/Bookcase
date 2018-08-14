@@ -1,4 +1,4 @@
-# Bookcase [![](http://cf.way2muchnoise.eu/297252.svg)](https://stardewvalley.curseforge.com/projects/297252)
+# Bookcase [![](http://cf.way2muchnoise.eu/297252.svg)](https://stardewvalley.curseforge.com/projects/297252) [![](https://img.shields.io/discord/464610060950306816.svg?logo=discord&colorB=7289DA)](https://discord.gg/qnZ96VU)
 
 Bookcase is a core API mod for Stardew Valley. The aim of this mod is to provide other moders with helpful utilities and improve general compatability between mods.
 

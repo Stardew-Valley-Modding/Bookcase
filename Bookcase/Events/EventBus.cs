@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using Bookcase.Lib;
 
 namespace Bookcase.Events {
 
@@ -15,35 +16,27 @@ namespace Bookcase.Events {
         public delegate void EventListener(T args);
 
         /// <summary>
-        /// An enum containing the various event priorities. 
-        /// 
-        /// Higher priority events happen first. Lower priority happen last.
+        /// Internal collection of all subscribed listeners.
         /// </summary>
-        public enum Priority { Highest, Hight, Normal, Low, Lowest };
-
-        /// <summary>
-        /// Internal collection of all the applied listeners.
-        /// </summary>
-        private List<EventListener> listeners = new List<EventListener>();
+        private MultiDict<int, EventListener> listeners = new MultiDict<int, EventListener>();
 
         /// <summary>
         /// Adds an event listener to this event bus.
         /// </summary>
         /// <param name="listener">The listener to add.</param>
         /// <param name="priority">Optional parameter to set the priority of the listener.</param>
-        public void Add(EventListener listener, Priority priority = Priority.Normal) {
+        public void Add(EventListener listener, int priority = Priority.normal) {
 
-            // TODO Implement the priority. Not currently used.
-            this.listeners.Add(listener);
+            this.listeners.Add(priority, listener);
         }
 
         /// <summary>
         /// Removes a listener from the bus.
         /// </summary>
         /// <param name="listener">The listener to remove.</param>
-        public void Remove(EventListener listener) {
+        public void Remove(EventListener listener, int priority = Priority.normal) {
 
-            this.listeners.Remove(listener);
+            this.listeners.Remove(listener, priority);
         }
 
         /// <summary>
@@ -53,13 +46,16 @@ namespace Bookcase.Events {
         /// <returns>Whether or not the event was canceled.</returns>
         public bool Post(T args) {
 
-            foreach (var z in this.listeners) {
+            foreach (int priority in Priority.priorities) {
 
-                z(args);
+                foreach (var listener in this.listeners.Get(priority)) {
 
-                if (args.IsCanceled()) {
+                    listener(args);
 
-                    break;
+                    if (args.IsCanceled()) {
+
+                        break;
+                    }
                 }
             }
 

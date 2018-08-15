@@ -7,9 +7,9 @@ namespace Bookcase.Patches {
 
     class PatchGainExperience : IGamePatch {
 
-        Type IGamePatch.TargetType => typeof(Farmer);
+        public Type TargetType => typeof(Farmer);
 
-        MethodInfo IGamePatch.TargetMethod => typeof(Farmer).GetMethod("gainExperience");
+        public MethodBase TargetMethod => TargetType.GetMethod("gainExperience");
 
         public static bool Prefix(Farmer __instance, ref int which, ref int howMuch) {
 

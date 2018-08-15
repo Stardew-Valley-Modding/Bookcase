@@ -10,9 +10,9 @@ namespace Bookcase.Patches {
 
     class TooltipPatch : IGamePatch {
 
-        Type IGamePatch.TargetType => typeof(IClickableMenu);
+        public Type TargetType => typeof(IClickableMenu);
 
-        MethodInfo IGamePatch.TargetMethod => typeof(IClickableMenu).GetMethod("drawToolTip");
+        public MethodBase TargetMethod => TargetType.GetMethod("drawToolTip");
 
         public static void Prefix(SpriteBatch b, ref string hoverText, ref string hoverTitle, Item hoveredItem, ref int healAmountToDisplay, ref int currencySymbol, ref int moneyAmountToShowAtBottom) {
 

@@ -9,7 +9,7 @@ namespace Bookcase.Patches {
 
         public Type TargetType => typeof(StardewValley.Utility);
 
-        public MethodInfo TargetMethod => TargetType.GetMethod("pickPersonalFarmEvent");
+        public MethodBase TargetMethod => TargetType.GetMethod("pickPersonalFarmEvent");
 
         public static void Postfix(ref FarmEvent __result) {
 

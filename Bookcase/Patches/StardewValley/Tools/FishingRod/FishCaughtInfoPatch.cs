@@ -9,7 +9,7 @@ namespace Bookcase.Patches {
 
         public Type TargetType => typeof(StardewValley.Tools.FishingRod);
 
-        public MethodInfo TargetMethod => TargetType.GetMethod("pullFishFromWater");
+        public MethodBase TargetMethod => TargetType.GetMethod("pullFishFromWater");
 
         public static void Prefix(Farmer ___lastUser, int whichFish, int fishSize, int fishQuality, int fishDifficulty, bool treasureCaught, bool wasPerfect = false) {
 

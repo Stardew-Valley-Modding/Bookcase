@@ -4,38 +4,29 @@ using System.Collections.Generic;
 namespace Bookcase.Events {
 
     /// <summary>
-    /// Defines the various priority values.
+    /// An enum containing the various event priorities. 
+    /// 
+    /// Higher priority events happen first. Lower priority happen last.
     /// </summary>
-    public class Priority {
-
+    public enum Priority {
         /// <summary>
-        /// This will happen first.
+        /// Happen first.
         /// </summary>
-        public const int highest = 0;
-
+        Highest,
         /// <summary>
-        /// This is not first, but before normal.
+        /// Happen second.
         /// </summary>
-        public const int high = 1;
-
+        Hight,
         /// <summary>
-        /// This is the normal priority.
+        /// Happen third.
         /// </summary>
-        public const int normal = 2;
-
+        Normal,
         /// <summary>
-        /// This is not last, but after normal.
+        /// Happen second last.
         /// </summary>
-        public const int low = 3;
-
+        Low,
         /// <summary>
-        /// This will happen last.
+        /// Happen last.
         /// </summary>
-        public const int lowest = 4;
-
-        /// <summary>
-        /// An array for all the priorities.
-        /// </summary>
-        public static readonly int[] priorities = { highest, high, normal, low, lowest };
-    }
+        Lowest };
 }

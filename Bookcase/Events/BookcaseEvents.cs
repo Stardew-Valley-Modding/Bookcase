@@ -5,13 +5,6 @@ namespace Bookcase.Events {
     public static class BookcaseEvents {
 
         /// <summary>
-        /// An enum containing the various event priorities. 
-        /// 
-        /// Higher priority events happen first. Lower priority happen last.
-        /// </summary>
-        public enum Priority { Highest, Hight, Normal, Low, Lowest };
-
-        /// <summary>
         /// This event is fired when an item tooltip is displayed.
         /// </summary>
         public static EventBus<ItemTooltipEvent> OnItemTooltip = new EventBus<ItemTooltipEvent>();
@@ -40,5 +33,25 @@ namespace Bookcase.Events {
         /// This event is fired when the nightly personal event is selected.
         /// </summary>
         public static EventBus<SelectFarmEvent> SelectPersonalEvent = new EventBus<SelectFarmEvent>();
+
+        /// <summary>
+        /// Stardew Valley's launch tick - fired once per game start.
+        /// </summary>
+        public static EventBus<Event> FirstGameTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.QuaterSecondTick - is fired every 250ms.
+        /// </summary>
+        public static EventBus<Event> GameQuaterSecondTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.HalfSecondTick - fired every 500ms.
+        /// </summary>
+        public static EventBus<Event> GameHalfSecondTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.SecondTick - fired every 1000ms.
+        /// </summary>
+        public static EventBus<Event> GameFullSecondTick = new EventBus<Event>();
     }
 }

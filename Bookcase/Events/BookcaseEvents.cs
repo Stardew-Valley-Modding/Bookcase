@@ -5,13 +5,6 @@ namespace Bookcase.Events {
     public static class BookcaseEvents {
 
         /// <summary>
-        /// An enum containing the various event priorities. 
-        /// 
-        /// Higher priority events happen first. Lower priority happen last.
-        /// </summary>
-        public enum Priority { Highest, Hight, Normal, Low, Lowest };
-
-        /// <summary>
         /// This event is fired when an item tooltip is displayed.
         /// </summary>
         public static EventBus<ItemTooltipEvent> OnItemTooltip = new EventBus<ItemTooltipEvent>();
@@ -40,5 +33,10 @@ namespace Bookcase.Events {
         /// This event is fired when the nightly personal event is selected.
         /// </summary>
         public static EventBus<SelectFarmEvent> SelectPersonalEvent = new EventBus<SelectFarmEvent>();
+
+        /// <summary>
+        /// This event is fired when a shop menu has been setup. Including inventory and prices.
+        /// </summary>
+        public static EventBus<ShopSetupEvent> ShopSetupEvent = new EventBus<ShopSetupEvent>();
     }
 }

@@ -40,11 +40,6 @@ namespace Bookcase.Events {
         public static EventBus<Event> FirstGameTick = new EventBus<Event>();
 
         /// <summary>
-        /// The tick after Stardew Valley's launch tick - fired once per game start.
-        /// </summary>
-        public static EventBus<Event> SecondGameTick = new EventBus<Event>();
-
-        /// <summary>
         /// Wrapper of SMAPI's GameEvents.QuaterSecondTick - is fired every 250ms.
         /// </summary>
         public static EventBus<Event> GameQuaterSecondTick = new EventBus<Event>();

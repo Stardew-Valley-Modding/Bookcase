@@ -18,14 +18,14 @@ namespace Bookcase.Events {
         /// <summary>
         /// Internal collection of all subscribed listeners.
         /// </summary>
-        private MultiDict<int, EventListener> listeners = new MultiDict<int, EventListener>();
+        private MultiDict<Priority, EventListener> listeners = new MultiDict<Priority, EventListener>();
 
         /// <summary>
         /// Adds an event listener to this event bus.
         /// </summary>
         /// <param name="listener">The listener to add.</param>
         /// <param name="priority">Optional parameter to set the priority of the listener.</param>
-        public void Add(EventListener listener, int priority = Priority.normal) {
+        public void Add(EventListener listener, Priority priority = Priority.Normal) {
 
             this.listeners.Add(priority, listener);
         }
@@ -34,7 +34,7 @@ namespace Bookcase.Events {
         /// Removes a listener from the bus.
         /// </summary>
         /// <param name="listener">The listener to remove.</param>
-        public void Remove(EventListener listener, int priority = Priority.normal) {
+        public void Remove(EventListener listener, Priority priority = Priority.Normal) {
 
             this.listeners.Remove(listener, priority);
         }
@@ -46,7 +46,7 @@ namespace Bookcase.Events {
         /// <returns>Whether or not the event was canceled.</returns>
         public bool Post(T args) {
 
-            foreach (int priority in Priority.priorities) {
+            foreach (Priority priority in Enum.GetValues(typeof(Priority))) {
 
                 foreach (var listener in this.listeners.Get(priority)) {
 
@@ -58,7 +58,6 @@ namespace Bookcase.Events {
                     }
                 }
             }
-
             return args.IsCanceled();
         }
     }

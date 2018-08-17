@@ -56,7 +56,6 @@
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
     <Compile Include="Events\Farmer\FarmerCaughtFishEvent.cs" />
     <Compile Include="Events\Menus\ShopSetupEvent.cs" />
-    <Compile Include="Events\Priority.cs" />
     <Compile Include="Events\SMAPIEventWrapper.cs" />
     <Compile Include="Events\World\SelectFarmEvent.cs" />
     <Compile Include="Harmony\HarmonyBundled.cs" />

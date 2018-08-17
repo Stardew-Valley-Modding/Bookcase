@@ -20,7 +20,7 @@ namespace Bookcase.Patches
 
         public static void Prefix(CollectionsPage __instance, ref string ___hoverText, ref int ___currentTab, ref int ___currentPage)
         {
-            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(___currentTab, ___currentPage, ___hoverText);
+            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(__instance,___currentTab, ___currentPage, ___hoverText, __instance.collections);
             BookcaseEvents.CollectionsPageDrawEvent.Post(evt);
             ___currentTab = evt.currentTab;
             ___currentPage = evt.currentPage;

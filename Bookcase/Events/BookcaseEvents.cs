@@ -53,5 +53,7 @@ namespace Bookcase.Events {
         /// Wrapper of SMAPI's GameEvents.SecondTick - fired every 1000ms.
         /// </summary>
         public static EventBus<Event> GameFullSecondTick = new EventBus<Event>();
+
+        public static EventBus<CollectionsPageDrawEvent> CollectionsPageDrawEvent = new EventBus<CollectionsPageDrawEvent>();
     }
 }

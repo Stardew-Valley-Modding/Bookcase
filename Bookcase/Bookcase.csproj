@@ -64,6 +64,7 @@
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\MultDictionary.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
+    <Compile Include="Patches\StardewValley\Menus\IClickableMenu\CollectionHoverTextDescriptionPatch.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\DoFunctionPatch.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\FishCaughtInfoPatch.cs" />
     <Compile Include="Patches\IGamePatch.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Patches\StardewValley\Menus\IClickableMenu\TooltipPatch.cs" />
     <Compile Include="Patches\StardewValley\Utility\PatchPickPersonalFarmEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CharacterUtils.cs" />
     <Compile Include="Utils\ItemUtils.cs" />
     <Compile Include="Utils\MathsUtils.cs" />
     <Compile Include="Utils\NPCUtils.cs" />

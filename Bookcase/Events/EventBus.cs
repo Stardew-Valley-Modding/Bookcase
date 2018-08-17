@@ -4,6 +4,13 @@ using Bookcase.Lib;
 namespace Bookcase.Events {
 
     /// <summary>
+    /// An enum containing the various event priorities. 
+    /// 
+    /// Higher priority events happen first. Lower priority happen last.
+    /// </summary>
+    public enum Priority { Highest, Hight, Normal, Low, Lowest };
+
+    /// <summary>
     /// The event bus used by Bookcase. Allows for fairly efficient events with priority and event cancelling. 
     /// </summary>
     /// <typeparam name="T">The event type</typeparam>

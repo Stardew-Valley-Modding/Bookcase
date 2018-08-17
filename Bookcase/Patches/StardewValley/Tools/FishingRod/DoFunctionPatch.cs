@@ -11,7 +11,7 @@ namespace Bookcase.Patches {
 
         public Type TargetType => typeof(StardewValley.Tools.FishingRod);
 
-        public MethodInfo TargetMethod => TargetType.GetMethod("DoFunction");
+        public MethodBase TargetMethod => TargetType.GetMethod("DoFunction");
 
         public static IEnumerable<CodeInstruction> Transpile(IEnumerable<CodeInstruction> instructions) {
 

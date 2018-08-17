@@ -35,6 +35,11 @@ namespace Bookcase.Events {
         public static EventBus<SelectFarmEvent> SelectPersonalEvent = new EventBus<SelectFarmEvent>();
 
         /// <summary>
+        /// This event is fired when a shop menu has been setup. Including inventory and prices.
+        /// </summary>
+        public static EventBus<ShopSetupEvent> ShopSetupEvent = new EventBus<ShopSetupEvent>();
+
+        /// <summary>
         /// Stardew Valley's launch tick - fired once per game start.
         /// </summary>
         public static EventBus<Event> FirstGameTick = new EventBus<Event>();

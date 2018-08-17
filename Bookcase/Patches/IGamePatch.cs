@@ -18,6 +18,6 @@ namespace Bookcase.Patches {
         /// Gets the target method to patch. 
         /// </summary>
         /// <returns>The method to apply the patches to.</returns>
-        MethodInfo TargetMethod { get; }
+        MethodBase TargetMethod { get; }
     }
 }

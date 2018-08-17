@@ -2,6 +2,9 @@
 
 namespace Bookcase.Events {
 
+    /// <summary>
+    /// Events implemented by Bookcase specifically - using EventBus<T> to allow for priorities. Registration is atypical of C# events, requiring you to manually register the handler via a method rather than using the event notation.
+    /// </summary>
     public static class BookcaseEvents {
 
         /// <summary>

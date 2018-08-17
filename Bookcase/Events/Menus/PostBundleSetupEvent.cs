@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Bookcase.Events
 {
+    /// <summary>
+    /// Code run everytime a bundle is 'setup', essentially allowing you the ability to inject information into an already created bundle's display.
+    /// </summary>
     public class PostBundleSetupEvent : Event
     {
         public List<ClickableTextureComponent> ingredientList;

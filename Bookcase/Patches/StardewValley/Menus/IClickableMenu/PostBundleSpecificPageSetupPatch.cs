@@ -9,6 +9,9 @@ using Bookcase.Events;
 
 namespace Bookcase.Patches
 {
+    /// <summary>
+    /// Code run everytime a bundle is 'setup', essentially allowing you the ability to inject information into an already created bundle's display.
+    /// </summary>
     public class PostBundleSpecificPageSetupPatch : IGamePatch
     {
         public Type TargetType => typeof(JunimoNoteMenu);

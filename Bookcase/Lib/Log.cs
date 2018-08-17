@@ -66,7 +66,7 @@ namespace Bookcase {
         /// <param name="message">The message to put in the console.</param>
         public void Error(string message) {
 
-            this.monitor.Log(message, LogLevel.Warn);
+            this.monitor.Log(message, LogLevel.Error);
         }
 
         /// <summary>

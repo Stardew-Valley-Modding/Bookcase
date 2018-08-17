@@ -40,6 +40,19 @@ namespace Bookcase.Events {
         public static EventBus<ShopSetupEvent> ShopSetupEvent = new EventBus<ShopSetupEvent>();
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static EventBus<CollectionsPageDrawEvent> CollectionsPageDrawEvent = new EventBus<CollectionsPageDrawEvent>();
+
+        /// <summary>
+        /// Fired after JunimoNotesMenu.setupBundleSpecificPage.
+        /// </summary>
+        public static EventBus<PostBundleSetupEvent> PostBundleSpecificPageSetup = new EventBus<PostBundleSetupEvent>();
+        ///
+        ///SMAPI Events
+        ///
+        #region SMAPI Events
+        /// <summary>
         /// Stardew Valley's launch tick - fired once per game start.
         /// </summary>
         public static EventBus<Event> FirstGameTick = new EventBus<Event>();
@@ -58,7 +71,6 @@ namespace Bookcase.Events {
         /// Wrapper of SMAPI's GameEvents.SecondTick - fired every 1000ms.
         /// </summary>
         public static EventBus<Event> GameFullSecondTick = new EventBus<Event>();
-
-        public static EventBus<CollectionsPageDrawEvent> CollectionsPageDrawEvent = new EventBus<CollectionsPageDrawEvent>();
+        #endregion
     }
 }

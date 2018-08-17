@@ -21,11 +21,19 @@ namespace Bookcase.Harmony {
         public HarmonyBundled() {
 
             String localHarmonyPath = $"{BookcaseMod.modHelper.DirectoryPath}{Path.DirectorySeparatorChar}0Harmony.dll";
-            //String localHarmonyPdb = $"{BookcaseMod.modHelper.DirectoryPath}{Path.DirectorySeparatorChar}0Harmony.pdb";
+            String localHarmonyPdb = $"{BookcaseMod.modHelper.DirectoryPath}{Path.DirectorySeparatorChar}0Harmony.pdb";
 
             byte[] rawAssembly = File.ReadAllBytes(localHarmonyPath);
-            //byte[] rawSymbolStore = File.ReadAllBytes(localHarmonyPdb);
-            Assembly localHarmony = AppDomain.CurrentDomain.Load(rawAssembly);
+            byte[] rawSymbolStore;
+            Assembly localHarmony;
+
+            if (File.Exists(localHarmonyPdb))
+            {
+                rawSymbolStore = File.ReadAllBytes(localHarmonyPdb);
+                localHarmony = AppDomain.CurrentDomain.Load(rawAssembly, rawSymbolStore);
+            }
+            else
+                localHarmony = AppDomain.CurrentDomain.Load(rawAssembly);
 
             BookcaseMod.logger.Info($"Attempting to load the bundled harmony from {localHarmonyPath}");
 

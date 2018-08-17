@@ -53,6 +53,8 @@
     <Compile Include="Events\Farmer\FarmerEvent.cs" />
     <Compile Include="Events\Farmer\FarmerFishItemEvent.cs" />
     <Compile Include="Events\Farmer\FarmerGainExperienceEvent.cs" />
+    <Compile Include="Events\Menus\PostBundleSetupEvent.cs" />
+    <Compile Include="Events\Menus\CollectionsPageDrawEvent.cs" />
     <Compile Include="Events\Menus\ItemTooltipEvent.cs" />
     <Compile Include="Events\Farmer\FarmerCaughtFishEvent.cs" />
     <Compile Include="Events\Menus\ShopSetupEvent.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Lib\Log.cs" />
     <Compile Include="Lib\MultDictionary.cs" />
     <Compile Include="Lib\StardewModHooksWrapper.cs" />
+    <Compile Include="Patches\StardewValley\Menus\IClickableMenu\PostBundleSpecificPageSetupPatch.cs" />
     <Compile Include="Patches\StardewValley\Menus\IClickableMenu\CollectionsPageDrawPatch.cs" />
     <Compile Include="Patches\StardewValley\Menus\ShopMenu\PatchSetUpShopOwner.cs" />
     <Compile Include="Patches\StardewValley\Tools\FishingRod\DoFunctionPatch.cs" />

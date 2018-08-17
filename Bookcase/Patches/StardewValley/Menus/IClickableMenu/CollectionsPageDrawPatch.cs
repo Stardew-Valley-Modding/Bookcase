@@ -12,19 +12,16 @@ namespace Bookcase.Patches
     public class CollectionsPageDrawPatch : IGamePatch
     {
         public Type TargetType => typeof(CollectionsPage);
-        public MethodInfo TargetMethod => TargetType.GetMethod("draw");/*
-        public static void Postfix(CollectionsPage __instance, int currentTab, int index, ref string __result)
-        {
-            if (currentTab == 5 || currentTab == 6)
-                return;
 
-            BookcaseMod.logger.Alert(__result);
-            __result += "\nTest";
-        }*/
-        public static bool Prefix(CollectionsPage __instance, int itemIndex, int currentTab, int currentPage)
+        public MethodBase TargetMethod => TargetType.GetMethod("draw");
+
+        public static bool Prefix(CollectionsPage __instance, ref string ___hoverText, ref int ___currentTab, ref int ___currentPage)
         {
-            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(itemIndex, currentTab, currentPage);
+            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(___currentTab, ___currentPage, ___hoverText);
             BookcaseEvents.CollectionsPageDrawEvent.Post(evt);
+            ___currentTab = evt.currentTab;
+            ___currentPage = evt.currentPage;
+            ___hoverText = evt.hoverText;
             return true;
         }
     }

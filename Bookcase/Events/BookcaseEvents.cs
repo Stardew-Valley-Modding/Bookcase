@@ -40,17 +40,15 @@ namespace Bookcase.Events {
         public static EventBus<ShopSetupEvent> ShopSetupEvent = new EventBus<ShopSetupEvent>();
 
         /// <summary>
-        /// 
+        /// The draw event for StardewValley.Menus.CollectionsPage, can be used to alter the tooltip text.
         /// </summary>
         public static EventBus<CollectionsPageDrawEvent> CollectionsPageDrawEvent = new EventBus<CollectionsPageDrawEvent>();
 
         /// <summary>
-        /// Fired after JunimoNotesMenu.setupBundleSpecificPage.
+        /// Fired after JunimoNotesMenu.setupBundleSpecificPage. Used to append any logic to the end of the bundle setup. Caution advised due to specifics of method.
         /// </summary>
         public static EventBus<PostBundleSetupEvent> PostBundleSpecificPageSetup = new EventBus<PostBundleSetupEvent>();
-        ///
-        ///SMAPI Events
-        ///
+
         #region SMAPI Events
         /// <summary>
         /// Stardew Valley's launch tick - fired once per game start.

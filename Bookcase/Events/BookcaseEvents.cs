@@ -2,6 +2,9 @@
 
 namespace Bookcase.Events {
 
+    /// <summary>
+    /// Events implemented by Bookcase specifically - using EventBus<T> to allow for priorities. Registration is atypical of C# events, requiring you to manually register the handler via a method rather than using the event notation.
+    /// </summary>
     public static class BookcaseEvents {
 
         /// <summary>
@@ -33,5 +36,37 @@ namespace Bookcase.Events {
         /// This event is fired when a shop menu has been setup. Including inventory and prices.
         /// </summary>
         public static EventBus<ShopSetupEvent> ShopSetupEvent = new EventBus<ShopSetupEvent>();
+
+        /// <summary>
+        /// The draw event for StardewValley.Menus.CollectionsPage, can be used to alter the tooltip text.
+        /// </summary>
+        public static EventBus<CollectionsPageDrawEvent> CollectionsPageDrawEvent = new EventBus<CollectionsPageDrawEvent>();
+
+        /// <summary>
+        /// Fired after JunimoNotesMenu.setupBundleSpecificPage. Used to append any logic to the end of the bundle setup. Caution advised due to specifics of method.
+        /// </summary>
+        public static EventBus<PostBundleSetupEvent> PostBundleSpecificPageSetup = new EventBus<PostBundleSetupEvent>();
+
+        #region SMAPI Events
+        /// <summary>
+        /// Stardew Valley's launch tick - fired once per game start.
+        /// </summary>
+        public static EventBus<Event> FirstGameTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.QuaterSecondTick - is fired every 250ms.
+        /// </summary>
+        public static EventBus<Event> GameQuaterSecondTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.HalfSecondTick - fired every 500ms.
+        /// </summary>
+        public static EventBus<Event> GameHalfSecondTick = new EventBus<Event>();
+
+        /// <summary>
+        /// Wrapper of SMAPI's GameEvents.SecondTick - fired every 1000ms.
+        /// </summary>
+        public static EventBus<Event> GameFullSecondTick = new EventBus<Event>();
+        #endregion
     }
 }

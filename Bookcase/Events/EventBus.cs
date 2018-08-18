@@ -65,7 +65,6 @@ namespace Bookcase.Events {
                     }
                 }
             }
-
             return args.IsCanceled();
         }
     }

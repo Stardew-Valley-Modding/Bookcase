@@ -98,7 +98,7 @@ namespace Bookcase.Patches {
                     if (patch.TargetType == null)
                         throw new NullReferenceException($"{patch.GetType().ToString()} patch failed because TargetType returned null.");
 
-                    if(patch.TargetMethod == null)
+                    if (patch.TargetMethod == null)
                         throw new NullReferenceException($"{patch.GetType().ToString()} patch failed because TargetMethod returned null.");
 
                     BookcaseMod.logger.Debug($"Patching {patch.TargetType.ToString()} - {patch.TargetMethod.ToString()}");

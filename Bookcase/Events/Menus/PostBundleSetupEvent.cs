@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookcase.Events
-{
+namespace Bookcase.Events {
     /// <summary>
     /// Code run everytime a bundle is 'setup', essentially allowing you the ability to inject information into an already created bundle's display.
     /// </summary>
-    public class PostBundleSetupEvent : Event
-    {
+    public class PostBundleSetupEvent : Event {
         public List<ClickableTextureComponent> ingredientList;
         public List<ClickableTextureComponent> ingredientSlots;
         public InventoryMenu inventory;
@@ -20,8 +18,7 @@ namespace Bookcase.Events
         /// </summary>
         public readonly Bundle currentBundle;
 
-        public PostBundleSetupEvent(List<ClickableTextureComponent> ingredientList, List<ClickableTextureComponent> ingredientSlots, InventoryMenu inventory, Bundle currentBundle)
-        {
+        public PostBundleSetupEvent(List<ClickableTextureComponent> ingredientList, List<ClickableTextureComponent> ingredientSlots, InventoryMenu inventory, Bundle currentBundle) {
             this.ingredientList = ingredientList;
             this.ingredientSlots = ingredientSlots;
             this.inventory = inventory;

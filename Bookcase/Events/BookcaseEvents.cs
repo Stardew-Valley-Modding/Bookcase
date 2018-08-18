@@ -18,11 +18,6 @@ namespace Bookcase.Events {
         public static EventBus<FarmerCaughtFishEvent> FishCaughtInfo = new EventBus<FarmerCaughtFishEvent>();
 
         /// <summary>
-        /// This event is fired when the item that is fished up is actually determined. After the player has realed the item in.
-        /// </summary>
-        public static EventBus<FarmerFishItemEvent> FishItem = new EventBus<FarmerFishItemEvent>();
-
-        /// <summary>
         /// This event is fired when a player gains EXP for a skill.
         /// </summary>
         public static EventBus<FarmerGainExperienceEvent> OnSkillEXPGain = new EventBus<FarmerGainExperienceEvent>();

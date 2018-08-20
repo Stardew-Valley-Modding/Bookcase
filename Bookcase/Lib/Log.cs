@@ -28,54 +28,54 @@ namespace Bookcase {
         /// Allows a caught exception to be resolved by throwing it to the logger.
         /// </summary>
         /// <param name="message">The message to put in console.</param>
-        public void Trace(string message) {
+        public void Trace(object message) {
 
-            this.monitor.Log(message, LogLevel.Trace);
+            this.monitor.Log(message?.ToString(), LogLevel.Trace);
         }
 
         /// <summary>
         /// Prints a debug message to the console.
         /// </summary>
         /// <param name="message">The message to put in the console.</param>
-        public void Debug(string message) {
+        public void Debug(object message) {
 
-            this.monitor.Log(message, LogLevel.Debug);
+            this.monitor.Log(message?.ToString(), LogLevel.Debug);
         }
 
         /// <summary>
         /// Prints an info message to the console.
         /// </summary>
         /// <param name="message">The message to put in the console.</param>
-        public void Info(string message) {
+        public void Info(object message) {
 
-            this.monitor.Log(message, LogLevel.Info);
+            this.monitor.Log(message?.ToString(), LogLevel.Info);
         }
 
         /// <summary>
         /// Prints a warning message to the console.
         /// </summary>
         /// <param name="message">The message to put in the console.</param>
-        public void Warn(string message) {
+        public void Warn(object message) {
 
-            this.monitor.Log(message, LogLevel.Warn);
+            this.monitor.Log(message?.ToString(), LogLevel.Warn);
         }
 
         /// <summary>
         /// Prints an error message to the console.
         /// </summary>
         /// <param name="message">The message to put in the console.</param>
-        public void Error(string message) {
+        public void Error(object message) {
 
-            this.monitor.Log(message, LogLevel.Error);
+            this.monitor.Log(message?.ToString(), LogLevel.Error);
         }
 
         /// <summary>
         /// Prints an alert message to the console.
         /// </summary>
         /// <param name="message">The message to put in the console.</param>
-        public void Alert(string message) {
+        public void Alert(object message) {
 
-            this.monitor.Log(message, LogLevel.Alert);
+            this.monitor.Log(message?.ToString(), LogLevel.Alert);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Bookcase.Events {
+﻿namespace Bookcase.Events {
 
     /// <summary>
     /// Events implemented by Bookcase specifically - using EventBus<T> to allow for priorities. Registration is atypical of C# events, requiring you to manually register the handler via a method rather than using the event notation.
@@ -46,6 +44,16 @@ namespace Bookcase.Events {
         /// Fired after JunimoNotesMenu.setupBundleSpecificPage. Used to append any logic to the end of the bundle setup. Caution advised due to specifics of method.
         /// </summary>
         public static EventBus<PostBundleSetupEvent> PostBundleSpecificPageSetup = new EventBus<PostBundleSetupEvent>();
+
+        /// <summary>
+        /// Fired just before a player starts a new day.
+        /// </summary>
+        public static EventBus<FarmerStartDayEvent> FarmerStartDayEventPre = new EventBus<FarmerStartDayEvent>();
+
+        /// <summary>
+        /// Fired after a player has started a new day.
+        /// </summary>
+        public static EventBus<FarmerStartDayEvent> FarmerStartDayEventPost = new EventBus<FarmerStartDayEvent>();
 
         #region SMAPI Events
         /// <summary>

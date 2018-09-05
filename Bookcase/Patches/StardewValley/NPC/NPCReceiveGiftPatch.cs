@@ -18,7 +18,7 @@ namespace Bookcase.Patches
 
         public MethodBase TargetMethod => TargetType.GetMethod("receiveGift");
 
-        public static bool Prefix(NPC __instance, StardewValley.Object o, Farmer giver, ref bool updateGiftLimitInfo, ref float friendshipChangeMultiplier, ref bool showResponse)
+        public static bool Prefix(NPC __instance, ref StardewValley.Object o, ref Farmer giver, ref bool updateGiftLimitInfo, ref float friendshipChangeMultiplier, ref bool showResponse)
         {
             NPCReceiveGiftEvent args = new NPCReceiveGiftEvent(__instance, o, giver, updateGiftLimitInfo, friendshipChangeMultiplier,showResponse);
             BookcaseEvents.NPCReceiveGiftPre.Post(args);

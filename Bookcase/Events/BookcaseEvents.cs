@@ -55,6 +55,11 @@
         /// </summary>
         public static EventBus<FarmerStartDayEvent> FarmerStartDayEventPost = new EventBus<FarmerStartDayEvent>();
 
+        /// <summary>
+        /// Fired at start of NPC Gift receive method. (When an NPC is gifted an item)
+        /// </summary>
+        public static EventBus<NPCReceiveGiftEvent> NPCReceiveGiftPre = new EventBus<NPCReceiveGiftEvent>();
+
         #region SMAPI Events
         /// <summary>
         /// Stardew Valley's launch tick - fired once per game start.

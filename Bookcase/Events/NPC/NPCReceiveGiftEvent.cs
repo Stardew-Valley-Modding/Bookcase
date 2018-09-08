@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookcase.Events
-{
+namespace Bookcase.Events {
     /// <summary>
     /// Event fired when an NPC is given a gift.
     /// </summary>
-    public class NPCReceiveGiftEvent : Event
-    {
+    public class NPCReceiveGiftEvent : Event {
         /// <summary>
         /// The NPC being given the gift. Immutable.
         /// </summary>
@@ -42,8 +40,7 @@ namespace Bookcase.Events
         /// </summary>
         public bool ShowResponse { get; set; }
 
-        public NPCReceiveGiftEvent(NPC instance, StardewValley.Object o, Farmer giver, bool updateGiftLimitInfo, float friendshipChangeMultiplier, bool showResponse)
-        {
+        public NPCReceiveGiftEvent(NPC instance, StardewValley.Object o, Farmer giver, bool updateGiftLimitInfo, float friendshipChangeMultiplier, bool showResponse) {
             Target = instance;
             Gift = o;
             Giver = giver;
@@ -52,8 +49,7 @@ namespace Bookcase.Events
             ShowResponse = showResponse;
         }
 
-        public override bool CanCancel()
-        {
+        public override bool CanCancel() {
             return true;
         }
     }

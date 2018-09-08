@@ -7,20 +7,17 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookcase.Patches
-{
+namespace Bookcase.Patches {
     /// <summary>
     /// Patches NPC.receiveGift and runs when an NPC receives a gift from a player.
     /// </summary>
-    public class NPCReceiveGiftPatch : IGamePatch
-    {
+    public class NPCReceiveGiftPatch : IGamePatch {
         public Type TargetType => typeof(NPC);
 
         public MethodBase TargetMethod => TargetType.GetMethod("receiveGift");
 
-        public static bool Prefix(NPC __instance, ref StardewValley.Object o, ref Farmer giver, ref bool updateGiftLimitInfo, ref float friendshipChangeMultiplier, ref bool showResponse)
-        {
-            NPCReceiveGiftEvent args = new NPCReceiveGiftEvent(__instance, o, giver, updateGiftLimitInfo, friendshipChangeMultiplier,showResponse);
+        public static bool Prefix(NPC __instance, ref StardewValley.Object o, ref Farmer giver, ref bool updateGiftLimitInfo, ref float friendshipChangeMultiplier, ref bool showResponse) {
+            NPCReceiveGiftEvent args = new NPCReceiveGiftEvent(__instance, o, giver, updateGiftLimitInfo, friendshipChangeMultiplier, showResponse);
             BookcaseEvents.NPCReceiveGiftPre.Post(args);
             o = args.Gift;
             giver = args.Giver;

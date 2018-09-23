@@ -1,4 +1,5 @@
-﻿using Bookcase.Events;
+using Bookcase.Events;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley.Menus;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,21 @@ namespace Bookcase.Patches {
 
         public MethodBase TargetMethod => TargetType.GetMethod("draw");
 
-        public static void Prefix(CollectionsPage __instance, ref string ___hoverText, ref int ___currentTab, ref int ___currentPage) {
-            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(__instance, ___currentTab, ___currentPage, ___hoverText, __instance.collections);
+        public static void Prefix(ref SpriteBatch b, ref CollectionsPage __instance){
+            FieldInfo currentTab = __instance.GetType().GetField("currentTab", BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo currentPage = __instance.GetType().GetField("currentPage", BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo hoverText = __instance.GetType().GetField("hoverText", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            int currentTabVal = (int)currentTab.GetValue(__instance);
+            int currentPageVal = (int)currentPage.GetValue(__instance);
+            string hoverTextVal = (string)hoverText.GetValue(__instance);
+
+            CollectionsPageDrawEvent evt = new CollectionsPageDrawEvent(__instance, currentTabVal, currentPageVal, hoverTextVal, __instance.collections);
             BookcaseEvents.CollectionsPageDrawEvent.Post(evt);
-            ___currentTab = evt.currentTab;
-            ___currentPage = evt.currentPage;
-            ___hoverText = evt.hoverText;
+
+            currentTab.SetValue(__instance, evt.currentTab);
+            currentPage.SetValue(__instance, evt.currentPage);
+            hoverText.SetValue(__instance, evt.hoverText);
         }
     }
 }

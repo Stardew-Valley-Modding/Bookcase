@@ -19,6 +19,7 @@ nugetRestore {
 
 msbuild {
 	
+  verbosity = 'detailed'
   projectFile = file("${project_file}")
   projectName = project.name
   targets = ['Clean', 'Rebuild']

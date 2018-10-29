@@ -331,3 +331,4 @@ ASALocalRun/
 
 # Gradle
 .gradle/
+build/

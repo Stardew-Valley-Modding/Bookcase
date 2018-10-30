@@ -1,18 +1,78 @@
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
-task nuget (type:Exec) {
+plugins {
 
-    commandLine 'nuget'
-	args('restore')
-	args("${project_solution}")
+    id "com.ullink.msbuild" version "2.21"
+	id 'com.ullink.nuget' version '2.15'
 }
 
-task xbuild (type:Exec) {
+nuget {
 
-    commandLine 'xbuild'
+    version = "${nuget_version}"
+}
+
+nugetRestore {
+
+    solutionDirectory = "";
+}
+
+msbuild {
+	
+  verbosity = 'detailed'
+  projectFile = file("${project_file}")
+  projectName = project.name
+  targets = ['Clean', 'Rebuild']
+
+  version = "${msbuild_version}"
+  destinationDir = "${msbuild_destination}"
+  intermediateDir = "${msbuild_intermediate}"
+}
+
+assemblyInfoPatcher {
+
+  version = "${project_version}" + getBuildNumber() + ".0"
+  fileVersion = version
+  informationalVersion = version
+}
+
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
 }
 
 String getBuildNumber() {
     return System.getenv("BUILD_NUMBER") ?: System.getenv("TRAVIS_BUILD_NUMBER") ?: "0"
+}
+
+task buildManifest {
+    
+	doLast {
+	
+	  def manifest = file("${project_dir}/manifest.json")
+	
+	  JsonBuilder builder = new JsonBuilder(new JsonSlurper().parseText(manifest.text))
+	  builder.content.Name = "${manifest_name}"
+	  builder.content.Author = "${manifest_author}"
+	  builder.content.Version = "${project_version}" + getBuildNumber()
+	  builder.content.Description = "${manifest_description}"
+	  builder.content.UniqueID = "${manifest_modid}"
+	  builder.content.EntryDll = "${manifest_dll}"
+	  builder.content.UpdateKeys = "${manifest_updatekey}".split(' ')
+	
+	  new File("${msbuild_destination}/manifest.json").write(builder.toPrettyString())
+	}
+	
+}
+
+task createArchive(type: Zip) {
+
+  from "${msbuild_destination}"
+  include '*'
+  into (project.name)
+  archiveName project.name + "-" + "${project_version}" + getBuildNumber() + '.zip'
 }

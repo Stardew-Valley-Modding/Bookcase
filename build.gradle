@@ -10,31 +10,3 @@ task msbuild (type:Exec) {
 String getBuildNumber() {
     return System.getenv("BUILD_NUMBER") ?: System.getenv("TRAVIS_BUILD_NUMBER") ?: "0"
 }
-
-task buildManifest {
-    
-	doLast {
-	
-	  def manifest = file("${project_dir}/manifest.json")
-	
-	  JsonBuilder builder = new JsonBuilder(new JsonSlurper().parseText(manifest.text))
-	  builder.content.Name = "${manifest_name}"
-	  builder.content.Author = "${manifest_author}"
-	  builder.content.Version = "${project_version}" + getBuildNumber()
-	  builder.content.Description = "${manifest_description}"
-	  builder.content.UniqueID = "${manifest_modid}"
-	  builder.content.EntryDll = "${manifest_dll}"
-	  builder.content.UpdateKeys = "${manifest_updatekey}".split(' ')
-	
-	  new File("${msbuild_destination}/manifest.json").write(builder.toPrettyString())
-	}
-	
-}
-
-task createArchive(type: Zip) {
-
-  from "${msbuild_destination}"
-  include '*'
-  into (project.name)
-  archiveName project.name + "-" + "${project_version}" + getBuildNumber() + '.zip'
-}

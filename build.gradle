@@ -1,10 +1,14 @@
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
-task msbuild (type:Exec) {
+task nuget (type:Exec) {
 
     commandLine "nuget restore ${project_solution}"
-	commandLine 'xbuild'
+}
+
+task xbuild (type:Exec) {
+
+    commandLine 'xbuild'
 }
 
 String getBuildNumber() {

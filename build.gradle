@@ -3,7 +3,7 @@ import groovy.json.JsonSlurper
 
 task nuget (type:Exec) {
 
-    commandLine "nuget restore ${project_solution}"
+    commandLine 'nuget' 'restore' "${project_solution}"
 }
 
 task xbuild (type:Exec) {

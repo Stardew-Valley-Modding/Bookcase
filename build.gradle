@@ -7,11 +7,6 @@ plugins {
 	id 'com.ullink.nuget' version '2.15'
 }
 
-nuget {
-
-    version = "${nuget_version}"
-}
-
 nugetRestore {
 
     solutionDirectory = "";
@@ -24,7 +19,6 @@ msbuild {
   projectName = project.name
   targets = ['Clean', 'Rebuild']
 
-  version = "${msbuild_version}"
   destinationDir = "${msbuild_destination}"
   intermediateDir = "${msbuild_intermediate}"
 }

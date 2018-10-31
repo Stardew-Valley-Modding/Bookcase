@@ -1,3 +1,19 @@
+buildscript {
+    repositories {
+        maven { 
+        
+            url = 'https://maven.mcmoddev.com/'
+        }
+    }
+    
+    dependencies {
+    
+        classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.1.5'
+    }
+}
+
+apply plugin: 'com.matthewprenger.cursegradle'
+
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
@@ -68,4 +84,25 @@ task createArchive(type: Zip) {
   include '*'
   into (project.name)
   archiveName project.name + "-" + "${project_version}" + getBuildNumber() + '.zip'
+}
+
+curseforge {
+
+    apiKey = System.getenv('curse_auth') ? System.getenv('curse_auth') : 0 
+    def versions = "${curse_versions}".split(', ')
+
+    project {
+
+        id = "${curse_project}"
+        releaseType = 'alpha'
+        changelog = ""
+        changelogType = 'markdown'
+
+        versions.each {
+
+            addGameVersion "${it}"
+        }
+		
+		mainArtifact(file('build/distributions/' + project.name + '-' + "${project_version}" + getBuildNumber() + '.zip'))
+    }
 }

@@ -14,8 +14,6 @@ nugetRestore {
 
 msbuild {
 	
-	println project.gradle.gradleUserHomeDir
-  verbosity = 'detailed'
   projectFile = file("${project_file}")
   projectName = project.name
   targets = ['Clean', 'Rebuild']

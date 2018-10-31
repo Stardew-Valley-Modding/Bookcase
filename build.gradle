@@ -99,10 +99,7 @@ curseforge {
         changelog = ""
         changelogType = 'markdown'
 
-        versions.each {
-
-            addGameVersion "${it}"
-        }
+        // versions.each {addGameVersion "${it}"}
 		
 		mainArtifact(file('build/distributions/' + project.name + '-' + "${project_version}" + getBuildNumber() + '.zip'))
     }

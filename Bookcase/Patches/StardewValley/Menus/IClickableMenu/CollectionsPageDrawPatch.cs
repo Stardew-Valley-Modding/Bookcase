@@ -17,7 +17,7 @@ namespace Bookcase.Patches {
 
         public MethodBase TargetMethod => TargetType.GetMethod("draw");
 
-        public static void Prefix(ref SpriteBatch b, ref CollectionsPage __instance){
+        public static void Prefix(ref SpriteBatch b, ref CollectionsPage __instance) {
             FieldInfo currentTab = __instance.GetType().GetField("currentTab", BindingFlags.NonPublic | BindingFlags.Instance);
             FieldInfo currentPage = __instance.GetType().GetField("currentPage", BindingFlags.NonPublic | BindingFlags.Instance);
             FieldInfo hoverText = __instance.GetType().GetField("hoverText", BindingFlags.NonPublic | BindingFlags.Instance);

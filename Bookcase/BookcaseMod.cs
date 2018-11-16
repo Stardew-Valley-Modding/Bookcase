@@ -2,6 +2,7 @@
 using Bookcase.Lib;
 using Bookcase.Patches;
 using System;
+using Bookcase.Registration;
 
 namespace Bookcase {
 
@@ -22,6 +23,7 @@ namespace Bookcase {
             StardewModHooksWrapper.CreateWrapper();
             PatchManager patchManager = new PatchManager();
             Events.SMAPIEventWrapper.SubscribeToSMAPIEvents();
+            Registries.LoadInjectors();
         }
     }
 }

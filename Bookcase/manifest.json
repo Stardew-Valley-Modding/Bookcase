@@ -1,10 +1,10 @@
 ﻿{
-   "Name": "name",
-   "Author": "author",
-   "Version": "version",
-   "Description": "description",
-   "UniqueID": "modid",
-   "EntryDll": "dll",
+   "Name": "Bookcase",
+   "Author": "Darkhax",
+   "Version": "0.7.0",
+   "Description": "Additional utilities for making stardew mods and ensuring cross compatability.",
+   "UniqueID": "darkhax.bookcase",
+   "EntryDll": "Bookcase.dll",
    "MinimumApiVersion": "2.0",
-   "UpdateKeys": ["updatekey"]
+   "UpdateKeys": ["GitHub:Stardew-Valley-Modding/Bookcase"]
 }

@@ -26,7 +26,7 @@ namespace Bookcase.Registration {
         /// Constructs a new identifier.
         /// </summary>
         /// <param name="joined">The ID as a string. This expects a modid:objid format.</param>
-        public Identifier(String joined) {
+        public Identifier(String joined, bool warn = true) {
 
             // Split the string on the seperator character.
             String[] parts = joined.Split(Seperator());
@@ -36,7 +36,11 @@ namespace Bookcase.Registration {
 
                 this.OwnerId = "error";
                 this.ObjectId = "error";
-                BookcaseMod.logger.Error($"Could not read identifier from {joined}, expected format is owner{Seperator()}object");
+
+                if (warn) {
+
+                    BookcaseMod.logger.Error($"Could not read identifier from {joined}, expected format is owner{Seperator()}object");
+                }
             }
 
             // Set the owner and object id normally.

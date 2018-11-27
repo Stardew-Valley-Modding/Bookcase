@@ -65,5 +65,17 @@ namespace Bookcase.Mail {
 
             Game1.addMailForTomorrow(this.Identifier.FullString, noLetter, sendToEveryone);
         }
+
+        /// <summary>
+        /// Attempts to immediately deliver this letter to a player.
+        /// </summary>
+        /// <param name="farmer">The player to deliver the mail to.</param>
+        public void addMailImmediately(Farmer farmer) {
+
+            if (!farmer.hasOrWillReceiveMail(this.Identifier.FullString)) {
+
+                farmer.mailbox.Add(this.Identifier.FullString);
+            }
+        }
     }
 }

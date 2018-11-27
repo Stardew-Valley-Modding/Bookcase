@@ -29,7 +29,7 @@ namespace Bookcase.Patches {
                 if (currentLetter != null && currentLetter.PreProcessor != null) {
 
                     // Sets mail to results of the pre processor.
-                    mail = currentLetter.PreProcessor.Invoke(currentLetter);
+                    mail = currentLetter.PreProcessor.Invoke(currentLetter, mail);
                 }
             }
         }

@@ -87,5 +87,10 @@ namespace Bookcase.Registration {
             Identifier other = obj as Identifier;
             return other != null && this.FullString.Equals(other.FullString);
         }
+
+        public override string ToString() {
+
+            return FullString;
+        }
     }
 }

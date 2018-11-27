@@ -23,9 +23,9 @@ namespace Bookcase.Mail {
         /// <summary>
         /// Allows code to be executed before the message has been created. The resulting string is what will be used in place
         /// of the value defined for constants. This allows for you to define custom replacement and formatting tokens in your
-        /// mail text.
+        /// mail text. Params are the letter and the mail string, return is the results.
         /// </summary>
-        public Func<Letter, String> PreProcessor;
+        public Func<Letter, String, String> PreProcessor;
 
         /// <summary>
         /// A callback hook for after the letter has been closed. This allows mail to do additional things like track data or

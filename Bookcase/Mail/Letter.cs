@@ -48,6 +48,14 @@ namespace Bookcase.Mail {
             // String based constructor for lazy people (IE: me).
         }
 
+        public Letter(String id, String contents, int color = -1, Texture2D background = null, Func<Letter, String, String> preProcessor = null, Action<Letter, LetterViewerMenu> callback = null) : this(new Identifier(id), contents) {
+
+            this.TextColor = color;
+            this.Background = background;
+            this.PreProcessor = preProcessor;
+            this.Callback = callback;
+        }
+
         public Letter(Identifier id, String contents) {
 
             this.Identifier = id;
@@ -57,24 +65,50 @@ namespace Bookcase.Mail {
         }
 
         /// <summary>
-        /// A helper method for sending the letter to players. This is not required, but can be useful.
+        /// Checks if a farmer has recieved this letter before or not.
         /// </summary>
-        /// <param name="noLetter"></param>
-        /// <param name="sendToEveryone"></param>
-        public void addMailForTomorrow(bool noLetter = false, bool sendToEveryone = false) {
+        /// <param name="farmer">The farmer to check for.</param>
+        /// <returns>Whether or not the farmer has recieved this letter in the past.</returns>
+        public bool HasRecieved(Farmer farmer) {
 
-            Game1.addMailForTomorrow(this.Identifier.FullString, noLetter, sendToEveryone);
+            return farmer.mailReceived.Contains(this.Identifier.ToString());
         }
 
         /// <summary>
-        /// Attempts to immediately deliver this letter to a player.
+        /// Delivers this letter to the specified player.
         /// </summary>
-        /// <param name="farmer">The player to deliver the mail to.</param>
-        public void addMailImmediately(Farmer farmer) {
+        /// <param name="farmer">The player to deliver the letter to.</param>
+        /// <param name="allowRepeats">Should the player be allowed to recieve this letter more than once ever.</param>
+        /// <param name="allowDuplicates">Should the player be able to recieve multiple copies of this letter at the same time?</param>
+        /// <param name="immediately">Should the player recieve the letter immediately, or on the next day?</param>
+        /// <returns>Whether or not the mail was successfuly delivered.</returns>
+        public bool DeliverMail(Farmer farmer, bool allowRepeats = false, bool allowDuplicates = false, bool immediately = false) {
 
-            if (!farmer.hasOrWillReceiveMail(this.Identifier.FullString)) {
+            String mailName = this.Identifier.FullString;
 
-                farmer.mailbox.Add(this.Identifier.FullString);
+            if (!allowRepeats && this.HasRecieved(farmer)) {
+
+                return false;
+            }
+
+            if (!allowDuplicates && (farmer.mailForTomorrow.Contains(mailName) || farmer.mailbox.Contains(mailName))) {
+
+                return false;
+            }
+
+            else {
+
+                if (immediately) {
+
+                    farmer.mailbox.Add(mailName);
+                }
+
+                else {
+
+                    farmer.mailForTomorrow.Add(mailName);
+                }
+
+                return true;
             }
         }
     }

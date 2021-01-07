@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Tyler Hancock (Darkhax)")]
 [assembly: AssemblyProduct("Bookcase")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("LGPL v2.1")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

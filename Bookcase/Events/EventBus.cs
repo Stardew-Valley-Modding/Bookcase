@@ -1,5 +1,5 @@
-﻿using System;
-using Bookcase.Lib;
+﻿using Bookcase.Lib;
+using System;
 
 namespace Bookcase.Events {
 

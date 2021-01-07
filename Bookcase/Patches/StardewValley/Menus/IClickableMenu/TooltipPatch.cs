@@ -1,9 +1,9 @@
-﻿using System;
-using System.Reflection;
+﻿using Bookcase.Events;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Menus;
-using Bookcase.Events;
-using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Reflection;
 
 
 namespace Bookcase.Patches {

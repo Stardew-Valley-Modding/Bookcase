@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Bookcase.Registration;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using StardewValley;
 using StardewValley.Menus;
-using Bookcase.Registration;
+using System;
+using System.Collections.Generic;
 
 namespace Bookcase.Mail {
 

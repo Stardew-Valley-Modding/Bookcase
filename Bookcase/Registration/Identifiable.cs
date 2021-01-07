@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bookcase.Registration {
+﻿namespace Bookcase.Registration {
 
     /// <summary>
     /// This class serves as a default implementation of IIdentifiable. It provides common ID logic.

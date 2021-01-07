@@ -1,7 +1,7 @@
 ﻿using StardewValley;
 using StardewValley.Menus;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace Bookcase.Events {
 

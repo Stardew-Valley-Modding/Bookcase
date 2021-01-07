@@ -1,8 +1,8 @@
-﻿using StardewModdingAPI;
-using Bookcase.Lib;
+﻿using Bookcase.Lib;
 using Bookcase.Patches;
-using System;
 using Bookcase.Registration;
+using StardewModdingAPI;
+using System;
 
 namespace Bookcase {
 

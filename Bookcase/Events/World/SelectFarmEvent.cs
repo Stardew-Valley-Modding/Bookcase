@@ -1,5 +1,4 @@
-﻿using StardewValley;
-using StardewValley.Events;
+﻿using StardewValley.Events;
 
 namespace Bookcase.Events {
 

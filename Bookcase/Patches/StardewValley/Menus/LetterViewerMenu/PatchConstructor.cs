@@ -1,11 +1,11 @@
-﻿using StardewValley.Menus;
-using System.Reflection;
-using System;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Bookcase.Mail;
 using Bookcase.Registration;
-using Bookcase.Mail;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.Menus;
+using System;
+using System.Reflection;
 
 namespace Bookcase.Patches {
 

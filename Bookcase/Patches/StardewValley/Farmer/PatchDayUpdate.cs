@@ -1,7 +1,7 @@
-﻿using System;
-using System.Reflection;
+﻿using Bookcase.Events;
 using StardewValley;
-using Bookcase.Events;
+using System;
+using System.Reflection;
 
 namespace Bookcase.Patches {
 

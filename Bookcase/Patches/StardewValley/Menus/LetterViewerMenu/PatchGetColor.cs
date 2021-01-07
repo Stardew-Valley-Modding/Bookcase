@@ -1,8 +1,8 @@
-﻿using System;
-using System.Reflection;
-using StardewValley.Menus;
+﻿using Bookcase.Mail;
 using Bookcase.Registration;
-using Bookcase.Mail;
+using StardewValley.Menus;
+using System;
+using System.Reflection;
 
 namespace Bookcase.Patches {
 

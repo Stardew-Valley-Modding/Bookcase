@@ -17,18 +17,21 @@ namespace Bookcase.Patches {
             // Read mail ID from the gui field using reflection.
             String mailTitle = BookcaseMod.reflection.GetField<String>(__instance, "mailTitle").GetValue();
 
-            // Convert mail ID to Bookcase's ID format. Ignoring validation warnings.
-            Identifier id = new Identifier(mailTitle, false);
+            if (mailTitle != null) {
 
-            if (Registries.Mail.HasKey(id)) {
+                // Convert mail ID to Bookcase's ID format. Ignoring validation warnings.
+                Identifier id = new Identifier(mailTitle, false);
 
-                Letter currentLetter = Registries.Mail.Get(id);
+                if (Registries.Mail.HasKey(id)) {
 
-                // If letter exists, and has a text color, modify the returned value.
-                if (currentLetter != null && currentLetter.TextColor != -1) {
+                    Letter currentLetter = Registries.Mail.Get(id);
 
-                    __result = currentLetter.TextColor;
-                    return false;
+                    // If letter exists, and has a text color, modify the returned value.
+                    if (currentLetter != null && currentLetter.TextColor != -1) {
+
+                        __result = currentLetter.TextColor;
+                        return false;
+                    }
                 }
             }
 

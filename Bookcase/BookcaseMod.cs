@@ -22,7 +22,6 @@ namespace Bookcase {
 
             StardewModHooksWrapper.CreateWrapper();
             PatchManager patchManager = new PatchManager();
-            Events.SMAPIEventWrapper.SubscribeToSMAPIEvents();
             Registries.LoadInjectors();
         }
     }

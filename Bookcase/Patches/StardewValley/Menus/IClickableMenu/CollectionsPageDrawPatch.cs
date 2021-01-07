@@ -15,7 +15,8 @@ namespace Bookcase.Patches {
     public class CollectionsPageDrawPatch : IGamePatch {
         public Type TargetType => typeof(CollectionsPage);
 
-        public MethodBase TargetMethod => TargetType.GetMethod("draw");
+        public MethodBase TargetMethod => TargetType.GetMethod("draw", new Type[] { typeof(SpriteBatch) }, null);
+
 
         public static void Prefix(ref SpriteBatch b, ref CollectionsPage __instance) {
             FieldInfo currentTab = __instance.GetType().GetField("currentTab", BindingFlags.NonPublic | BindingFlags.Instance);

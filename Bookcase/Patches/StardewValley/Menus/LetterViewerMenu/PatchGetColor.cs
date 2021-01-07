@@ -10,7 +10,7 @@ namespace Bookcase.Patches {
 
         public Type TargetType => typeof(LetterViewerMenu);
 
-        public MethodBase TargetMethod => TargetType.GetMethod("getTextColor", BindingFlags.Instance | BindingFlags.NonPublic);
+        public MethodBase TargetMethod => TargetType.GetMethod("getTextColor");
 
         public static bool Prefix(LetterViewerMenu __instance, ref int __result) {
 

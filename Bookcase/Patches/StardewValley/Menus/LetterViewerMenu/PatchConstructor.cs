@@ -13,9 +13,9 @@ namespace Bookcase.Patches {
 
         public Type TargetType => typeof(LetterViewerMenu);
 
-        public MethodBase TargetMethod => TargetType.GetConstructor(new Type[] { typeof(string), typeof(string) });
+        public MethodBase TargetMethod => TargetType.GetConstructor(new Type[] { typeof(string), typeof(string), typeof(bool)});
 
-        public static void Prefix(ref string mail, string mailTitle) {
+        public static void Prefix(ref string mail, string mailTitle, bool fromCollection) {
 
             // Convert mail ID to Bookcase's ID format. Ignoring validation warnings.
             Identifier id = new Identifier(mailTitle, false);
@@ -34,7 +34,7 @@ namespace Bookcase.Patches {
             }
         }
 
-        public static void Postfix(LetterViewerMenu __instance, string mail, string mailTitle, ref int ___moneyIncluded, ref Texture2D ___letterTexture) {
+        public static void Postfix(LetterViewerMenu __instance, string mail, string mailTitle, bool fromCollection, ref int ___moneyIncluded, ref Texture2D ___letterTexture) {
 
             // Convert mail ID to Bookcase's ID format. Ignoring validation warnings.
             Identifier id = new Identifier(mailTitle, false);

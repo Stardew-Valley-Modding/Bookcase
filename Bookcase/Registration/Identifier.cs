@@ -28,6 +28,12 @@ namespace Bookcase.Registration {
         /// <param name="joined">The ID as a string. This expects a modid:objid format.</param>
         public Identifier(String joined, bool warn = true) {
 
+            if (joined == null) {
+
+                BookcaseMod.logger.Error("Failed to create Identifier. The joined parameter was null!");
+                throw new ArgumentNullException("joined");
+            }
+
             // Split the string on the seperator character.
             String[] parts = joined.Split(Seperator());
 

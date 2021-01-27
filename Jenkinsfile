@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env groovy
+#!/usr/bin/env groovy
 import groovy.json.JsonOutput
 
 // Has to be the same as the solution name!

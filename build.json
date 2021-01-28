@@ -6,5 +6,5 @@
   "changelogType": "markdown",
   "changelogFile": "changelog.md",
   "releaseType": "release",
-  "deploy": false
+  "deploy": true
 }

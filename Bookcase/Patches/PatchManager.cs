@@ -25,10 +25,11 @@ namespace Bookcase.Patches {
         public PatchManager() {
 
             harmony = HarmonyInstance.Create("net.darkhax.bookcase");
-            harmony.VersionInfo(out harmonyVersion);
-            BookcaseMod.logger.Debug($"Using Harmony {harmonyVersion.ToString()}.");
 
             if (harmony != null) {
+
+                harmony.VersionInfo(out harmonyVersion);
+                BookcaseMod.logger.Debug($"Using Harmony {harmonyVersion.ToString()}.");
 
                 this.Load();
                 this.Apply();
